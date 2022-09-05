@@ -1,0 +1,22 @@
+name: TechTrends - Package with Docker
+on:
+  push:
+    branches:
+      - 'main'
+jobs:
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+      -
+        name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: /
+          push: true
+          tags: techtrends:latest
