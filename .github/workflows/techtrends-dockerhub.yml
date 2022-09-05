@@ -20,4 +20,4 @@ jobs:
         with:
           context: project
           push: true
-          tags: techtrends:latest
+          tags: kashifilyasansys/techtrends:latest
