@@ -4,9 +4,10 @@ on:
     branches:
       - 'main'
 jobs:
-  check-bats-version:
+  build-and-upload-docker:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       -
         name: Login to DockerHub
         uses: docker/login-action@v2
@@ -17,6 +18,6 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v3
         with:
-          context: /
+          context: .
           push: true
           tags: techtrends:latest
