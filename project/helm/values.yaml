@@ -1,0 +1,30 @@
+app:
+  name: techtrends
+  
+namespace:
+  name: sandbox
+  
+replicaCount: 1
+ 
+image:
+  repository: kashifilyasansys/techtrends 
+  tag: latest
+  pullPolicy: IfNotPresent
+
+containerPort: 3111
+livenessProbe: /healthz
+readinessProbe: /healthz
+
+resources:
+  requests:
+    memory: 64Mi
+    cpu: 250m
+  limits:
+    memory: 128Mi
+    cpu: 500m
+    
+service:
+  port: 4111
+  protocol: TCP
+  targetPort: 3111
+  type: ClusterIP
